@@ -3,11 +3,8 @@ import secrets
 import time
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any, Tuple
-from passlib.context import CryptContext
+import bcrypt
 from jose import jwt, JWTError
-
-# Password Hashing CryptContext
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # JWT Configuration
 JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "delay_lands_sec_gov_jwt_key_2026_dev_fallback_change_in_prod")
@@ -22,11 +19,15 @@ LOCKOUT_WINDOW_SECONDS = 300 # 5 minutes
 
 def hash_password(password: str) -> str:
     """Hashes password using bcrypt."""
-    return pwd_context.hash(password)
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verifies plain password against hashed password."""
-    return pwd_context.verify(plain_password, hashed_password)
+    try:
+        return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+    except Exception:
+        return False
+
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> Tuple[str, int]:
     """Creates a signed JWT access token."""
