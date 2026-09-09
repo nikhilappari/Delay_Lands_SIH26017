@@ -1,0 +1,205 @@
+{
+  "model_name": "Random Forest Delay Classifier",
+  "algorithm": "RandomForestClassifier",
+  "n_estimators": 200,
+  "class_weight": "balanced",
+  "random_state": 42,
+  "train_samples": 800,
+  "test_samples": 200,
+  "accuracy": 83.0,
+  "precision": 87.36,
+  "recall": 92.68,
+  "f1_score": 89.94,
+  "confusion_matrix": [
+    [
+      14,
+      22
+    ],
+    [
+      12,
+      152
+    ]
+  ],
+  "features": [
+    "Project_Type",
+    "Land_Area_Acres",
+    "Owners",
+    "Disputes",
+    "Objections",
+    "Pending_Documents",
+    "Pending_Approvals",
+    "Compensation_Pending",
+    "Current_Stage",
+    "Days_in_Current_Stage",
+    "Total_Days",
+    "Previous_Delays",
+    "Land_Record_Complexity"
+  ],
+  "categorical_features": [
+    "Project_Type",
+    "Current_Stage",
+    "Land_Record_Complexity"
+  ],
+  "numerical_features": [
+    "Land_Area_Acres",
+    "Owners",
+    "Disputes",
+    "Objections",
+    "Pending_Documents",
+    "Pending_Approvals",
+    "Compensation_Pending",
+    "Days_in_Current_Stage",
+    "Total_Days",
+    "Previous_Delays"
+  ],
+  "encoded_feature_names": [
+    "Project_Type_Airport",
+    "Project_Type_Dam",
+    "Project_Type_Highway",
+    "Project_Type_Industrial",
+    "Project_Type_Railway",
+    "Current_Stage_Approval",
+    "Current_Stage_Compensation",
+    "Current_Stage_Notification",
+    "Current_Stage_Objection",
+    "Current_Stage_Valuation",
+    "Current_Stage_Verification",
+    "Land_Record_Complexity_High",
+    "Land_Record_Complexity_Low",
+    "Land_Record_Complexity_Medium",
+    "Land_Area_Acres",
+    "Owners",
+    "Disputes",
+    "Objections",
+    "Pending_Documents",
+    "Pending_Approvals",
+    "Compensation_Pending",
+    "Days_in_Current_Stage",
+    "Total_Days",
+    "Previous_Delays"
+  ],
+  "feature_importance": [
+    {
+      "feature": "Total_Days",
+      "importance": 14.69
+    },
+    {
+      "feature": "Days_in_Current_Stage",
+      "importance": 14.69
+    },
+    {
+      "feature": "Land_Area_Acres",
+      "importance": 9.3
+    },
+    {
+      "feature": "Pending_Documents",
+      "importance": 6.95
+    },
+    {
+      "feature": "Objections",
+      "importance": 6.62
+    },
+    {
+      "feature": "Compensation_Pending",
+      "importance": 6.45
+    },
+    {
+      "feature": "Pending_Approvals",
+      "importance": 6.22
+    },
+    {
+      "feature": "Owners",
+      "importance": 5.85
+    },
+    {
+      "feature": "Previous_Delays",
+      "importance": 5.05
+    },
+    {
+      "feature": "Disputes",
+      "importance": 5.05
+    },
+    {
+      "feature": "Land_Record_Complexity_Low",
+      "importance": 2.05
+    },
+    {
+      "feature": "Land_Record_Complexity_High",
+      "importance": 1.86
+    },
+    {
+      "feature": "Current_Stage_Objection",
+      "importance": 1.5
+    },
+    {
+      "feature": "Project_Type_Highway",
+      "importance": 1.46
+    },
+    {
+      "feature": "Project_Type_Industrial",
+      "importance": 1.43
+    },
+    {
+      "feature": "Current_Stage_Notification",
+      "importance": 1.39
+    },
+    {
+      "feature": "Current_Stage_Valuation",
+      "importance": 1.35
+    },
+    {
+      "feature": "Land_Record_Complexity_Medium",
+      "importance": 1.32
+    },
+    {
+      "feature": "Project_Type_Dam",
+      "importance": 1.3
+    },
+    {
+      "feature": "Project_Type_Railway",
+      "importance": 1.25
+    },
+    {
+      "feature": "Current_Stage_Compensation",
+      "importance": 1.16
+    },
+    {
+      "feature": "Current_Stage_Verification",
+      "importance": 1.15
+    },
+    {
+      "feature": "Current_Stage_Approval",
+      "importance": 1.09
+    },
+    {
+      "feature": "Project_Type_Airport",
+      "importance": 0.84
+    }
+  ],
+  "categorical_options": {
+    "Project_Type": [
+      "Airport",
+      "Dam",
+      "Highway",
+      "Industrial",
+      "Railway"
+    ],
+    "Current_Stage": [
+      "Approval",
+      "Compensation",
+      "Notification",
+      "Objection",
+      "Valuation",
+      "Verification"
+    ],
+    "Land_Record_Complexity": [
+      "High",
+      "Low",
+      "Medium"
+    ]
+  },
+  "thresholds": {
+    "low_max": 30.0,
+    "medium_max": 70.0
+  }
+}
