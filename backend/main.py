@@ -43,6 +43,13 @@ def seed_initial_users():
             db.add(admin_user)
             db.commit()
             print(f"[Security] Initial Administrator account initialized ({admin_email} / ID: {admin_emp_id})")
+        else:
+            existing_admin.passwordHash = hash_password(admin_pwd)
+            existing_admin.status = "ACTIVE"
+            existing_admin.email = admin_email
+            existing_admin.employeeId = admin_emp_id
+            db.commit()
+            print(f"[Security] Administrator credentials synchronized ({admin_email})")
 
         # 2. Sample Active Government Officer (SLAO)
         officer_email = os.environ.get("OFFICER_EMAIL", "officer@delaylands.gov.in").strip().lower()
@@ -69,6 +76,13 @@ def seed_initial_users():
             db.add(officer_user)
             db.commit()
             print(f"[Security] Sample Officer account initialized ({officer_email} / ID: {officer_emp_id})")
+        else:
+            existing_officer.passwordHash = hash_password(officer_pwd)
+            existing_officer.status = "ACTIVE"
+            existing_officer.email = officer_email
+            existing_officer.employeeId = officer_emp_id
+            db.commit()
+            print(f"[Security] Officer credentials synchronized ({officer_email})")
     except Exception as e:
         print(f"[Security] User initialization notice: {e}")
     finally:
