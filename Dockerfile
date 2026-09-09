@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend & ML code
 COPY backend/ ./backend/
 COPY ml/ ./ml/
-COPY data/ ./data/
+RUN mkdir -p data
 
 # Copy built frontend into backend static folder
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
@@ -25,4 +25,5 @@ COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 ENV PORT=8000
 EXPOSE 8000
 
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+
